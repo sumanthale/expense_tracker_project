@@ -18,13 +18,13 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@NotNull(message = "Dont leave Name field empty")
+	@NotNull(message = "* Required")
 	private String name;
-	@NotNull(message = "Dont leave Email field empty")
+	@NotNull(message = "* Required")
 	private String email;
-	@NotNull(message = "Dont leave Password field empty")
+	@NotNull(message = "* Required")
 	private String password;
-	@Min(value = 1000, message = "Income should not be less than 1000")
+	@Min(value = 1000, message = "Minimun of 1000")
 	private int income;
 	@OneToMany(mappedBy = "user")
 	private List<Expense> expenses = new ArrayList<Expense>();
