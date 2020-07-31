@@ -8,15 +8,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotNull(message = "Dont leave Name field empty")
 	private String name;
+	@NotNull(message = "Dont leave Email field empty")
 	private String email;
+	@NotNull(message = "Dont leave Password field empty")
 	private String password;
+	@Min(value = 1000, message = "Income should not be less than 1000")
 	private int income;
 	@OneToMany(mappedBy = "user")
 	private List<Expense> expenses = new ArrayList<Expense>();
@@ -30,6 +38,10 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.income = income;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getName() {
