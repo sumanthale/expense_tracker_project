@@ -1,17 +1,21 @@
 package com.expense_tracker.expense_tracker.model;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Expense {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	
@@ -20,6 +24,8 @@ public class Expense {
 	private Date date;
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
+	@Enumerated(EnumType.STRING)
+	private Category category;
 	public String getName() {
 		return name;
 	}
@@ -54,6 +60,14 @@ public class Expense {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public Expense(String name, int cost, String description, Date date, Category category) {
+		super();
+		this.name = name;
+		this.cost = cost;
+		this.description = description;
+		this.date = date;
+		this.category = category;
 	}
 	
 	

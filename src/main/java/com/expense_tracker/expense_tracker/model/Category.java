@@ -1,0 +1,7 @@
+package com.expense_tracker.expense_tracker.model;
+
+public enum Category {
+	UTILITIES, SAVINGS, TRANSPORTATION, FOOD, DEBT, INSURANCE, PERSONAL_CARE, ENTERTAINMENT, SHOPPING, EDUCATION,
+	MISCELLANEOUS, KIDS, OTHERS
+
+}
