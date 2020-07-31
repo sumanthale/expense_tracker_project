@@ -26,6 +26,9 @@ public class Expense {
 	private User user;
 	@Enumerated(EnumType.STRING)
 	private Category category;
+	
+	public Expense() {
+	}
 	public String getName() {
 		return name;
 	}

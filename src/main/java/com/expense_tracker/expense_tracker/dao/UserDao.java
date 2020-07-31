@@ -1,6 +1,8 @@
 package com.expense_tracker.expense_tracker.dao;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -29,9 +31,15 @@ public class UserDao {
 
 		User user = userrepo.findById(5).orElse(new User());
 		Expense expense = new Expense("water", 10, "start bucks water", new Date(), Category.FOOD);
-//		user.addExpense(expense);
+		user.addExpense(expense);
 		expense.setUser(user);
 		expenserepo.save(expense);
+	}
+
+	public void getuserexp(int id) {
+
+		User findById = userrepo.findById(id).orElse(new User());
+		System.out.println(findById.getExpenses().toString());
 	}
 
 }

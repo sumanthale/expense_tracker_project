@@ -15,7 +15,8 @@ class ExpenseTrackerApplicationTests {
 	@Test
 	void contextLoads() {
 
-		userdao.insertExpense();
+//		userdao.insertExpense();
+		userdao.getuserexp(1);
 	}
 
 }
