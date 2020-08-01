@@ -1,5 +1,7 @@
 package com.expense_tracker.expense_tracker.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,9 +62,16 @@ public class UserController {
 	}
 
 	@PostMapping("/verifySignup")
-	public String verifySignUp(@ModelAttribute("newUser") @Valid User user, BindingResult result) {
+	public String verifySignUp(@ModelAttribute("newUser") @Valid User user, BindingResult result,ModelMap map) {
 		System.out.println(result);
-		if (result.hasErrors()) {
+		
+		Optional<User> findByEmail = userrepo.findByEmail(user.getEmail());
+		
+		if (result.hasErrors())  {
+			return "signup_page";
+		}
+		else if (findByEmail.isPresent()){
+			map.put("invaid_email", "* Email is  already taken");
 			return "signup_page";
 		}
 		userrepo.save(user);

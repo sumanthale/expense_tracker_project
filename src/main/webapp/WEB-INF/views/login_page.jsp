@@ -28,6 +28,7 @@
 			for="inputPassword" class="sr-only">Password</label> <input
 			type="password" id="inputPassword" class="form-control"
 			name="password" placeholder="Password" required />
+			<span class="showpwd"><i class="far fa-eye" id="togglePassword"></i></span>
 		<div class="checkbox mb-1 text-white">
 			<label> <input type="checkbox" value="remember-me" />
 				Remember me
@@ -36,7 +37,7 @@
 		<button class="btn btn-lg btn-primary btn-block" type="submit">
 			Sign in &nbsp;<i class="fas fa-sign-in-alt"></i>
 		</button>
-		<div class=" text-center text-danger">${error}</div>
+		<div class=" text-center text-danger font-weight-bold">${error}</div>
 
 		<small id="new" class="form-text text-center text-white">Don't
 			have an account <a class="text-success" id="signup"
@@ -44,16 +45,4 @@
 		</small>
 	</form>
 
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
-</body>
-</html>
+<%@ include file="common/footer.jspf" %>

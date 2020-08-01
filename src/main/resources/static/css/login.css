@@ -51,6 +51,15 @@ body {
 .form-signin .form-control:focus {
   z-index: 2;
 }
+.showpwd {
+	position: absolute;
+	top: 42.65%;
+	right: 15%;
+	cursor: pointer;
+	height: 2px;
+	width: 2px;
+	z-index: 10;
+}
 .form-signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;

@@ -24,7 +24,7 @@ public class User {
 	private String email;
 	@NotNull(message = "* Required")
 	private String password;
-	@Min(value = 1000, message = "Minimun of 1000")
+	@Min(value = 1000, message = "* Min of 1000")
 	private int income;
 	@OneToMany(mappedBy = "user")
 	private List<Expense> expenses = new ArrayList<Expense>();

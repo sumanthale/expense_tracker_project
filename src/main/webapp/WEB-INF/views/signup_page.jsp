@@ -32,7 +32,7 @@
 		<label for="inputEmail" class="sr-only">Email address</label>
 
 		<form:input type="email" id="inputEmail" cssClass="form-control"
-			placeholder="Email address" path="email" />
+			placeholder="Email address" path="email" /> <span class="text-danger error-email  p-2 w-75 h-auto">${invaid_email}</span>
 		<label for="inputPassword" class="sr-only">Password</label>
 		<form:errors path="password" cssClass="alert alert-danger error-password" />
 		<form:input type="password" id="inputPassword" cssClass="form-control"
@@ -44,33 +44,13 @@
 		<form:errors path="income" cssClass="alert alert-danger error-income" />
 		<form:input type="number" id="income" cssClass="form-control"
 			placeholder="Income" path="income" />
-		<button class="btn btn-lg btn-primary btn-block" type="submit">
-			Sign up &nbsp;<i class="fas fa-user-plus"></i>
+	
+		<button class="btn btn-lg btn-primary btn-inline-block ml-1" type="submit">
+			Sign up &nbsp; <i class="fas fa-user-plus"></i>
 		</button>
+		<a class="btn btn-lg btn-danger btn-inline-block ml-3" href="/">
+			Cancel &nbsp; <i class="fas fa-times"></i>&nbsp;
+		</a>
 	</form:form>
 
-	<script>
-		const togglePassword = document.querySelector("#togglePassword");
-		const password = document.querySelector("#inputPassword");
-		togglePassword.addEventListener("click", function(e) {
-
-			const type = password.getAttribute("type") === "password" ? "text"
-					: "password";
-			password.setAttribute("type", type);
-			this.classList.toggle("fa-eye-slash");
-		});
-	</script>
-
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
-</body>
-</html>
+<%@ include file="common/footer.jspf" %>
