@@ -18,9 +18,11 @@ public class Expense {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@NotNull(message = "don't leave empty")
+	@NotNull(message = "* required")
 	private String name;
-	@Min(value = 1, message = " should be positive")
+	
+	@NotNull(message = "* required")
+	@Min(value = 1, message = "Should be more than 0")
 	private int cost;
 	private String description;
 	private Date date=new Date();

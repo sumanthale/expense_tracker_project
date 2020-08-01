@@ -78,20 +78,18 @@ public class ExpenseController {
 
 		map.put("newExpense", new Expense());
 
-		return "addExpense_page";
+		return "addExpense_page2";
 
 	}
 
 	@PostMapping("/verifyExpense")
-	public String save(@Valid Expense expense, BindingResult result, ModelMap model) {
+	public String save(@ModelAttribute("newExpense")@Valid Expense expense, BindingResult result, ModelMap model) {
 		User user = (User) model.getAttribute("user");
-		System.out.println(user);
-		System.out.println(expense);
-		System.out.println(expense.getUser());
+
 		expense.setUser(user);
-		System.out.println(expense.getUser());
+		System.out.println(result);
 		if (result.hasErrors()) {
-			return "addExpense_page";
+			return "addExpense_page2";
 		}
 
 		expenserepo.save(expense);
@@ -122,7 +120,7 @@ public class ExpenseController {
 		Expense expense = expenserepo.findById(id).orElse(new Expense());
 		modelMap.put("newExpense", expense);
 		expenserepo.deleteById(id);
-		return "addExpense_page";
+		return "addExpense_page2";
 	}
 
 }
