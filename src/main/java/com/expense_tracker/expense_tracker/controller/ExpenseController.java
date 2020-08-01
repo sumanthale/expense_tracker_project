@@ -2,7 +2,9 @@ package com.expense_tracker.expense_tracker.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.expense_tracker.expense_tracker.model.Expense;
@@ -47,6 +52,27 @@ public class ExpenseController {
 
 	}
 
+	@ModelAttribute("categoryList")
+	public Map<String, String> buildState() {
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("UTILITIES", "UTILITIES");
+		map.put("SAVINGS", "SAVINGS");
+		map.put("TRANSPORTATION", "TRANSPORTATION");
+		map.put("FOOD", "FOOD");
+		map.put("DEBT", "DEBT");
+		map.put("INSURANCE", "INSURANCE");
+		map.put("PERSONAL_CARE", "PERSONAL_CARE");
+		map.put("ENTERTAINMENT", "ENTERTAINMENT");
+		map.put("SHOPPING", "SHOPPING");
+		map.put("EDUCATION", "EDUCATION");
+		map.put("MISCELLANEOUS", "MISCELLANEOUS");
+		map.put("KIDS", "KIDS");
+		map.put("OTHERS", "OTHERS");
+		return map;
+
+	}
+
 	@GetMapping("/addExpense")
 	public String showAddExpensePage(ModelMap map) {
 
@@ -57,7 +83,7 @@ public class ExpenseController {
 	}
 
 	@PostMapping("/verifyExpense")
-	public String save(@ModelAttribute("newExpense") @Valid Expense expense, BindingResult result, ModelMap model) {
+	public String save(@Valid Expense expense, BindingResult result, ModelMap model) {
 		User user = (User) model.getAttribute("user");
 		System.out.println(user);
 		System.out.println(expense);
@@ -80,6 +106,23 @@ public class ExpenseController {
 
 		model.put("expenseList", findExpensesOfUser);
 		return "landing_page";
+	}
+
+	@RequestMapping(value = "/deleteExpense", method = RequestMethod.GET)
+	public String deleteExpense(@RequestParam int id) {
+
+		expenserepo.deleteById(id);
+
+		return "redirect:/landingPage";
+	}
+
+	@RequestMapping(value = "/updateExpense", method = RequestMethod.GET)
+	public String updateTodoPage(@RequestParam int id, ModelMap modelMap) {
+
+		Expense expense = expenserepo.findById(id).orElse(new Expense());
+		modelMap.put("newExpense", expense);
+		expenserepo.deleteById(id);
+		return "addExpense_page";
 	}
 
 }

@@ -29,28 +29,39 @@
 		<caption>Expense Table</caption>
 		<thead class="thead-dark">
 			<tr>
-				<th>ID</th>
+				<!-- 				<th>ID</th> -->
 				<th>Name</th>
 				<th>Category</th>
 				<th>Cost</th>
 				<th>Date</th>
+				<th>Description</th>
+				<th>Edit</th>
+				<th>Delete</th>
+				
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${expenseList}" var="expense">
 				<tr>
-					<td>${expense.id}</td>
+					<%-- 		<td>${expense.id}</td> --%>
 					<td>${expense.name}</td>
 					<td>${expense.category}</td>
 					<td>${expense.cost}</td>
 					<td><fmt:formatDate value="${expense.date}"
 							pattern="dd/MM/yyyy" /></td>
+					<td>${expense.description}</td>
+				
+					<td><a type="button" class="btn btn-success"
+						href="/updateExpense?id=${expense.id}">Update</a></td>
+					<td><a type="button" class="btn btn-danger"
+						href="/deleteExpense?id=${expense.id}">Delete</a></td>
 				</tr>
+
 			</c:forEach>
 
 		</tbody>
 	</table>
-	
-		<a class="btn btn-primary" href="addExpense">addExpense</a>
+
+	<a class="btn btn-primary" href="addExpense">addExpense</a>
 
 	<%@ include file="common/footer.jspf"%>

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -19,7 +20,7 @@ public class Expense {
 	private int id;
 	@NotNull(message = "don't leave empty")
 	private String name;
-	@NotNull(message = "don't leave empty")
+	@Min(value = 1, message = " should be positive")
 	private int cost;
 	private String description;
 	private Date date=new Date();

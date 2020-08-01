@@ -24,17 +24,21 @@
 		<form:errors path="name" cssClass="alert alert-danger error-name" />
 
 
-		<form:input type="text" id="name" cssClass="form-control" placeholder="Name" path="name" />
+		<form:input type="text" id="name" cssClass="form-control"
+			placeholder="Name" path="name" />
 
-		<%-- 
-			<form:errors path="category" cssClass="alert alert-danger error-email" />
-		<form:input type="text" id="cost" cssClass="form-control"
-			placeholder="Category" path="category" />
-			 --%>
+
+		<form:errors path="category" cssClass="alert alert-danger error-email" />
+		<%-- <form:input type="text" id="cost" cssClass="form-control"
+			placeholder="Category" path="category" /> --%>
+
+		 <form:select path="category" cssClass="custom-select">
+			<form:options items="${categoryList}" />
+		</form:select> 
 
 		<form:errors path="cost" cssClass="alert alert-danger error-email" />
 		<form:input type="number" id="cost" cssClass="form-control"
-			placeholder="Cost" path="cost" />
+			placeholder="Cost" path="cost" onfocus="this.value=''" />
 
 		<form:errors path="description"
 			cssClass="alert alert-danger error-password" />
@@ -53,8 +57,8 @@
 			type="submit">
 			Submit &nbsp; <i class="fas fa-user-plus"></i>
 		</button>
-		<a class="btn btn-lg btn-danger btn-inline-block ml-3" href="/landingPage">
-			Cancel &nbsp; <i class="fas fa-times"></i>&nbsp;
+		<a class="btn btn-lg btn-danger btn-inline-block ml-3"
+			href="/landingPage"> Cancel &nbsp; <i class="fas fa-times"></i>&nbsp;
 		</a>
 	</form:form>
 
