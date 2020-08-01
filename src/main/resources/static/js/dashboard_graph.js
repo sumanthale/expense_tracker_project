@@ -6,19 +6,20 @@ var chart = new Chart(ctx, {
   // The data for our dataset
   data: {
     labels: [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
+      "UTILITIES",
+      "SAVINGS",
+      "TRANSPORTATION",
+      "FOOD",
+      "DEBT",
+      "INSURANCE",
+      "PERSONAL_CARE",
+      "ENTERTAINMENT",
+      "SHOPPING",
+      "EDUCATION",
+      "MISCELLANEOUS",
+      "KIDS",
+      "OTHERS",
+
     ],
     datasets: [
       {

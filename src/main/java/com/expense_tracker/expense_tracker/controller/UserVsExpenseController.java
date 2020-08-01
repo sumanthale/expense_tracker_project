@@ -25,7 +25,10 @@ public class UserVsExpenseController {
 		User user = (User) model.getAttribute("user");
 		
 		int sumOfExp = expenserepo.getSumOfExp(user.getId());
-		model.put("sum", sumOfExp);
+		model.put("exp", sumOfExp);
+		model.put("inc", user.getIncome());
+		int cost = expenserepo.findTotalcost("FOOD", 1);
+		model.put("list", cost);
 		return "userVsExp_page";
 
 	}

@@ -1,36 +1,110 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
-	crossorigin="anonymous" />
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous" />
-<style >
-#id{
-visibility:hidden}
+
+<%@ include file="common/header.jspf"%>
+<link href="css/dashboard.css" rel="stylesheet" />
+<style>
+#exp,#inc{
+display:none;
+}
+.checkbal,.main{
+margin-top:-30px;
+}
 </style>
-<title>Expense</title>
 </head>
 <body>
-<input value="${sum}" id="sum" class="">
+	<%@ include file="common/main-nav.jspf"%>
 
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
+	<div class="container-fluid">
+		<div class="row">
+			<%@ include file="common/side-nav.jspf"%>
+
+			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+				<div
+					class="d-flex justify-content-center pt-3 pb-2 mb-3 border-bottom">
+					<h1 class="text-centre">Expense VS Income</h1>
+				</div>
+				<input value="${exp}" id="exp"> <input value="${inc}"
+					id="inc">
+					 <input value="${list}"
+					id="lis">
+				<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+				<p class="d-flex justify-content-center checkbal">
+					<button class="btn btn-primary " type="button" onclick="myFunction()"
+						data-toggle="collapse" data-target="#collapseExample"
+						aria-expanded="false" aria-controls="collapseExample">
+						Check Balance Income</button>
+				</p>
+				<div class="collapse" id="collapseExample">
+					<div class="card card-body text-center">
+					<p class="alert alert-info" id="demo"></p></div>
+				</div>
+				
+
+
+			</main>
+		</div>
+	</div>
 </body>
-</html>
+<script>
+	var exp = document.getElementById("exp").value;
+	var inc = document.getElementById("inc").value;
+
+	var bal=inc-exp;
+	if(bal>0){
+		function myFunction() {
+			  
+			  document.getElementById("demo").innerHTML = bal;  
+			}
+	}
+	else{
+		  document.getElementById("demo").innerHTML = bal;  
+		 var element = document.getElementById("demo");
+		  element.classList.remove("alert-info");
+		  element.classList.add("alert-danger");
+		
+	}
+	
+	var ctx = document.getElementById("myChart").getContext("2d");
+	//Chart.defaults.global.defaultFontFamily = "Lato";
+	Chart.defaults.global.defaultFontSize = 16;
+	Chart.defaults.global.defaultFontColor = "#777";
+	var chart = new Chart(ctx, {
+		// The type of chart we want to create
+		type : "bar", // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+
+		// The data for our dataset
+		data : {
+			labels : [ "Expense", "Income",
+
+			],
+			datasets : [ {
+				label : "My First dataset",
+				backgroundColor : [ "#2ef7f4", "#ff507c",
+
+				],
+				//  backgroundColor: 'transparent',
+				data : [ exp, inc ],
+				borderWidth : 1,
+				borderColor : "#777",
+				hoverBorderWidth : 3,
+				hoverBorderColor : "#000",
+				pointBackgroundColor : '#007bff'
+			}, ],
+		},
+
+		// Configuration options go here
+		options : {
+			scales : {
+				yAxes : [ {
+					ticks : {
+						beginAtZero : true,
+					},
+				}, ],
+			},
+			legend : {
+				display : false,
+			},
+			
+		},
+	});
+</script>
+<%@ include file="common/footer.jspf"%>
