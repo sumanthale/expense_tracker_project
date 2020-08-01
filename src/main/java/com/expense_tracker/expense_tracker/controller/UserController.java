@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.expense_tracker.expense_tracker.model.User;
 import com.expense_tracker.expense_tracker.repository.UserRepository;
 import com.expense_tracker.expense_tracker.service.LoginService;
 
 @Controller
+@SessionAttributes("user")
 public class UserController {
 
 	@Autowired
@@ -52,7 +54,7 @@ public class UserController {
 		User user = userrepo.findById(logged_in_user_id).orElse(new User());
 
 		model.put("user", user);
-		return "landing_page";
+		return "redirect:/landingPage";
 	}
 
 	@GetMapping("/signUpForm")
@@ -78,8 +80,4 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	@GetMapping("/check")
-	public String check() {
-		return "dummy";
-	}
 }

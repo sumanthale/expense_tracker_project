@@ -10,21 +10,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Expense {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotNull(message = "don't leave empty")
 	private String name;
-
+	@NotNull(message = "don't leave empty")
 	private int cost;
 	private String description;
-	private Date date;
+	private Date date=new Date();
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
 	@Enumerated(EnumType.STRING)
 	private Category category;
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Expense() {
 	}
@@ -61,10 +75,12 @@ public class Expense {
 		return date;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Expense [id=" + id + ", name=" + name + ", cost=" + cost + ", description=" + description + ", date="
-				+ date + "]";
+				+ date + ", category=" + category + "]";
 	}
 
 	public void setDate(Date date) {
