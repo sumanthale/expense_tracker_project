@@ -18,7 +18,12 @@ public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 	@Query(value = "SELECT sum(cost) FROM expense where user_id = :id ", nativeQuery = true)
 	int getSumOfExp(@Param("id") int user_id);
 
-	@Query(value = "SELECT sum(cost) FROM expense WHERE category = :category and user_id = :id", nativeQuery = true)
+	@Query(value = "SELECT COALESCE(SUM(cost), 0)FROM expense WHERE category = :category and user_id = :id", nativeQuery = true)
 	int findTotalcost(@Param("category") String category, @Param("id") int user_id);
+	
+	@Query(value = "SELECT * FROM expense WHERE category = :category and user_id = :id", nativeQuery = true)
+	List<Expense> findByCategory(@Param("category") String category, @Param("id") int user_id);
+	
+	
 
 }

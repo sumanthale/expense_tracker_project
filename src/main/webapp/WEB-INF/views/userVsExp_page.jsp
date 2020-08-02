@@ -24,8 +24,7 @@ margin-top:-30px;
 				</div>
 				<input value="${exp}" id="exp"> <input value="${inc}"
 					id="inc">
-					 <input value="${list}"
-					id="lis">
+					
 				<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 				<p class="d-flex justify-content-center checkbal">
 					<button class="btn btn-primary " type="button" onclick="myFunction()"

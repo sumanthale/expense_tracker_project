@@ -2,6 +2,7 @@ package com.expense_tracker.expense_tracker.controller;
 
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,8 @@ public class UserController {
 		return "login_page";
 
 	}
-
+	@Autowired
+ EntityManager em;
 	@PostMapping("/verifyLogin")
 	public String save(@RequestParam String email, @RequestParam String password, ModelMap model) {
 
@@ -49,6 +51,7 @@ public class UserController {
 		if (logged_in_user_id == 0) {
 			model.put("error", "(*) Email  and password doesn't Match");
 			return "login_page";
+
 
 		}
 		User user = userrepo.findById(logged_in_user_id).orElse(new User());

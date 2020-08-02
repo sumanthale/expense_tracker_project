@@ -83,7 +83,7 @@ public class ExpenseController {
 	}
 
 	@PostMapping("/verifyExpense")
-	public String save(@ModelAttribute("newExpense")@Valid Expense expense, BindingResult result, ModelMap model) {
+	public String save(@ModelAttribute("newExpense") @Valid Expense expense, BindingResult result, ModelMap model) {
 		User user = (User) model.getAttribute("user");
 
 		expense.setUser(user);
@@ -101,6 +101,34 @@ public class ExpenseController {
 	public String check(ModelMap model) {
 		User user = (User) model.getAttribute("user");
 		List<Expense> findExpensesOfUser = expenserepo.findExpensesOfUser(user.getId());
+		int FOOD = expenserepo.findTotalcost("FOOD", user.getId());
+		int ENTERTAINMENT = expenserepo.findTotalcost("ENTERTAINMENT", user.getId());
+
+		int UTILITIES = expenserepo.findTotalcost("UTILITIES", user.getId());
+		int SAVINGS = expenserepo.findTotalcost("SAVINGS", user.getId());
+		int DEBT = expenserepo.findTotalcost("DEBT", user.getId());
+		int INSURANCE = expenserepo.findTotalcost("INSURANCE", user.getId());
+		int PERSONAL_CARE = expenserepo.findTotalcost("PERSONAL_CARE", user.getId());
+		int EDUCATION = expenserepo.findTotalcost("EDUCATION", user.getId());
+		int SHOPPING = expenserepo.findTotalcost("SHOPPING", user.getId());
+		int MISCELLANEOUS = expenserepo.findTotalcost("MISCELLANEOUS", user.getId());
+		int KIDS = expenserepo.findTotalcost("KIDS", user.getId());
+		int TRANSPORTATION = expenserepo.findTotalcost("TRANSPORTATION", user.getId());
+		int OTHERS = expenserepo.findTotalcost("OTHERS", user.getId());
+
+		model.put("FOOD", FOOD);
+		model.put("ENTERTAINMENT", ENTERTAINMENT);
+		model.put("UTILITIES", UTILITIES);
+		model.put("SAVINGS", SAVINGS);
+		model.put("DEBT", DEBT);
+		model.put("INSURANCE", INSURANCE);
+		model.put("PERSONAL_CARE", PERSONAL_CARE);
+		model.put("SHOPPING", SHOPPING);
+		model.put("EDUCATION", EDUCATION);
+		model.put("MISCELLANEOUS", MISCELLANEOUS);
+		model.put("KIDS", KIDS);
+		model.put("TRANSPORTATION", TRANSPORTATION);
+		model.put("OTHERS", OTHERS);
 
 		model.put("expenseList", findExpensesOfUser);
 		return "landing_page";
