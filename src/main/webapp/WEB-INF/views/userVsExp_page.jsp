@@ -77,7 +77,7 @@ margin-top:-30px;
 			],
 			datasets : [ {
 				label : "My First dataset",
-				backgroundColor : [ "#2ef7f4", "#ff507c",
+				backgroundColor : [ "#ff507c","#2ef7f4", 
 
 				],
 				//  backgroundColor: 'transparent',

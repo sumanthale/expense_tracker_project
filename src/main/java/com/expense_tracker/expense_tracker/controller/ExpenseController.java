@@ -117,12 +117,12 @@ public class ExpenseController {
 		int OTHERS = expenserepo.findTotalcost("OTHERS", user.getId());
 
 		model.put("FOOD", FOOD);
-		model.put("ENTERTAINMENT", ENTERTAINMENT);
 		model.put("UTILITIES", UTILITIES);
 		model.put("SAVINGS", SAVINGS);
 		model.put("DEBT", DEBT);
 		model.put("INSURANCE", INSURANCE);
 		model.put("PERSONAL_CARE", PERSONAL_CARE);
+		model.put("ENTERTAINMENT", ENTERTAINMENT);
 		model.put("SHOPPING", SHOPPING);
 		model.put("EDUCATION", EDUCATION);
 		model.put("MISCELLANEOUS", MISCELLANEOUS);
@@ -143,7 +143,7 @@ public class ExpenseController {
 	}
 
 	@RequestMapping(value = "/updateExpense", method = RequestMethod.GET)
-	public String updateTodoPage(@RequestParam int id, ModelMap modelMap) {
+	public String updateExpense(@RequestParam int id, ModelMap modelMap) {
 
 		Expense expense = expenserepo.findById(id).orElse(new Expense());
 		modelMap.put("newExpense", expense);
@@ -151,4 +151,51 @@ public class ExpenseController {
 		return "addExpense_page2";
 	}
 
+	@GetMapping("/expenseByDate")
+	public String expenseBYDate(ModelMap map) {
+		map.put("addedDate", new Expense());
+
+		return "expenses_by_date";
+	}
+
+	@PostMapping("/getExpenseByDate")
+	public String expenseBYDate2(@ModelAttribute("addedDate") @Valid Expense expense, BindingResult result,
+			ModelMap map) {
+
+		System.out.println(expense.getDate());
+
+		User user = (User) map.getAttribute("user");
+
+		List<Expense> findByDate = expenserepo.findByDate(expense.getDate(), user.getId());
+
+		System.out.println(findByDate);
+		map.put("added_date", expense.getDate());
+		map.put("dateList", findByDate);
+		System.out.println(findByDate.size());
+		if (findByDate.size() == 0) {
+			map.put("NoExpenseOnDate", "No expense Found on this date");
+		}
+
+		return "expenses_by_date";
+	}
+//	@RequestMapping(value = "/updateDatedExpense", method = RequestMethod.GET)
+//	public String updateExpenseByDate(@RequestParam int id, ModelMap modelMap) {
+//
+//		Expense expense = expenserepo.findById(id).orElse(new Expense());
+//		modelMap.put("newExpense", expense);
+//		expenserepo.deleteById(id);
+//		return "addExpense_page2";
+//	}
+//	
+//	@RequestMapping(value = "/deleteDatedExpense", method = RequestMethod.GET)
+//	public String deleteDatedExpense(@RequestParam int id) {
+//
+//		expenserepo.deleteById(id);
+//
+//		return "redirect:/";
+//	}
+
+	
+	
+	
 }

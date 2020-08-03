@@ -82,9 +82,6 @@
 								</tr>
 
 							</c:forEach>
-
-
-
 						</tbody>
 					</table>
 					<h1 class="text-warning d-1 text-centre">${noExpFound}</h1>

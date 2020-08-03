@@ -43,7 +43,7 @@
 		<label for="income" class="sr-only">Income</label>
 		<form:errors path="income" cssClass="alert alert-danger error-income" />
 		<form:input type="number" id="income" cssClass="form-control"
-			placeholder="Income" path="income" />
+			placeholder="Income" path="income"  onfocus="this.value=''" />
 	
 		<button class="btn btn-lg btn-primary btn-inline-block ml-1" type="submit">
 			Sign up &nbsp; <i class="fas fa-user-plus"></i>
