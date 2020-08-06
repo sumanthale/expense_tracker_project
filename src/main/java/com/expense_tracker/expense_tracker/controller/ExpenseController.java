@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.expense_tracker.expense_tracker.model.Expense;
 import com.expense_tracker.expense_tracker.model.User;
@@ -49,7 +50,6 @@ public class ExpenseController {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(simpleDateFormat, false));
-
 	}
 
 	@ModelAttribute("categoryList")
@@ -77,6 +77,9 @@ public class ExpenseController {
 	public String showAddExpensePage(ModelMap map) {
 
 		map.put("newExpense", new Expense());
+		
+		
+
 
 		return "addExpense_page2";
 

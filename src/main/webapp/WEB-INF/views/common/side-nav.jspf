@@ -4,85 +4,83 @@
 	<div class="sidebar-sticky pt-3">
 		<ul class="nav flex-column">
 			<li class="nav-item"><a class="nav-link" href="/landingPage">
-					<span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
+					<i class="fas fa-home"></i> &nbsp; Dashboard
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="/userVsExp">
-					<span data-feather="file"></span> Income Vs Expense
+					<i class="fas fa-balance-scale"></i> &nbsp; Income Vs Expense
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="/addExpense">
-					<span data-feather="shopping-cart"></span> Add Expense
+					<i class="fas fa-plus-circle"></i>&nbsp; Add Expense
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="/editUserDetails"> <span
-					data-feather="users"></span> Profile
+			<li class="nav-item"><a class="nav-link" href="/editUserDetails">
+					<i class="fas fa-edit"></i> &nbsp; Edit Profile
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="/editUserDetails"> <span
-					data-feather="bar-chart-2"></span> Update Income
+			<li class="nav-item"><a class="nav-link" href="/expenseByDate">
+					<span data-feather="layers"></span><i class="fas fa-calendar-day"></i>
+					&nbsp; Get Expenses By Date
 			</a></li>
-			<li class="nav-item"><a class="nav-link" href="/expenseByDate"> <span
-					data-feather="layers"></span> Get Expense On A Date
+			<li class="nav-item"><a class="nav-link" href="/allYearExpense">
+					<span data-feather="bar-chart-2"></span> <i
+					class="fas fa-calendar-check"></i> &nbsp; Yearly-end Scale
 			</a></li>
 		</ul>
 
 		<h6
 			class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-			<span>Saved reports</span> <a
+			<span>Detailed reports</span> <a
 				class="d-flex align-items-center text-muted" href="#"
 				aria-label="Add a new report"> <span data-feather="plus-circle"></span>
 			</a>
 		</h6>
 		<ul class="nav flex-column mb-2">
 			<li class="nav-item"><a class="nav-link"
-				href="category?name=FOOD"> <span data-feather="file-text"></span>
-					FOOD
+				href="category?name=FOOD"> <i class="fas fa-hamburger"></i>
+					&nbsp; FOOD
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/category?name=ENTERTAINMENT"> <span
-					data-feather="file-text"></span> ENTERTAINMENT
+				href="/category?name=ENTERTAINMENT"><i class="fas fa-film"></i>
+					&nbsp; ENTERTAINMENT</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="/category?name=UTILITIES"> <i class="fas fa-bolt"></i>
+					&nbsp; UTILITIES
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/category?name=UTILITIES"> <span data-feather="file-text"></span>
-					UTILITIES
+				href="/category?name=SAVINGS"> <i class="fas fa-piggy-bank"></i>
+					&nbsp; SAVINGS
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/category?name=SAVINGS"> <span data-feather="file-text"></span>
-					SAVINGS
+				href="/category?name=DEBT"><i class="fas fa-credit-card"></i>
+					&nbsp; DEBT </a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="/category?name=INSURANCE"> <i class="fas fa-car-crash"></i>
+					&nbsp; INSURANCE
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/category?name=DEBT"> <span data-feather="file-text"></span>
-					DEBT
+				href="/category?name=PERSONAL_CARE"><i class="fas fa-heartbeat"></i>
+					&nbsp; PERSONAL_CARE </a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="/category?name=SHOPPING"> <i class="fas fa-shopping-bag"></i>
+					&nbsp; SHOPPING
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/category?name=INSURANCE"> <span data-feather="file-text"></span>
-					INSURANCE
+				href="/category?name=EDUCATION"> <i class="fas fa-book"></i>
+					&nbsp; EDUCATION
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/category?name=PERSONAL_CARE"> <span
-					data-feather="file-text"></span> PERSONAL_CARE
+				href="/category?name=MISCELLANEOUS"> <i class="fas fa-box-open"></i>
+					&nbsp; MISCELLANEOUS
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/category?name=SHOPPING"> <span data-feather="file-text"></span>
-					SHOPPING
-			</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="/category?name=EDUCATION"> <span data-feather="file-text"></span>
-					EDUCATION
-			</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="/category?name=MISCELLANEOUS"> <span
-					data-feather="file-text"></span> MISCELLANEOUS
-			</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="/category?name=KIDS"> <span data-feather="file-text"></span>
+				href="/category?name=KIDS"> <i class="fas fa-baby"></i> &nbsp;
 					KIDS
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/category?name=TRANSPORTATION"> <span data-feather="file-text"></span>
-					TRANSPORTATION
+				href="/category?name=TRANSPORTATION"> <i class="fas fa-bus"></i>
+					&nbsp; TRANSPORTATION
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/category?name=OTHERS"> <span data-feather="file-text"></span>
-					OTHERS
-			</a></li>
+				href="/category?name=OTHERS"><i class="fas fa-clipboard-list"></i>
+					&nbsp; OTHERS </a></li>
 		</ul>
 	</div>
 </nav>

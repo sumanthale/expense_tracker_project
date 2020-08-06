@@ -26,6 +26,7 @@ public class User {
 	private int income;
 	@OneToMany(mappedBy = "user")
 	private List<Expense> expenses = new ArrayList<Expense>();
+	
 
 	public User() {
 	}

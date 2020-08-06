@@ -30,7 +30,7 @@ import com.expense_tracker.expense_tracker.repository.UserRepository;
 @Controller
 
 @SessionAttributes("user")
-public class UserVsExpenseController {
+public class IncomeVsExpenseController {
 
 	@Autowired
 	UserRepository userrepo;
@@ -55,8 +55,8 @@ public class UserVsExpenseController {
 	public String userVsExp(ModelMap model) {
 		User user = (User) model.getAttribute("user");
 		 List<Expense> findAll = expenserepo.findExpensesOfUser(user.getId());
-		//List<Expense> findAll = user.getExpenses();
-		 System.out.println(findAll);
+		// List<Expense> findAll = user.getExpenses();
+		System.out.println(findAll);
 		if (findAll.size() < 1 || findAll == null) {
 			model.put("noExpFound", "Add at least one Expense");
 			return "landing_page";
@@ -79,7 +79,7 @@ public class UserVsExpenseController {
 	public String singleCato(@RequestParam("name") String category, ModelMap map) {
 		User user = (User) map.getAttribute("user");
 
-		map.put("expenseCategory", category);
+		map.put("expenseCategory", category.substring(0, 1)+category.substring(1).toLowerCase());
 		List<Expense> findByCategory = expenserepo.findByCategory(category, user.getId());
 
 		map.put("expenseCategoryList", findByCategory);
@@ -122,5 +122,44 @@ public class UserVsExpenseController {
 
 		return "redirect:/category?name=" + expense.getCategory();
 	}
+	
+	@GetMapping("/allYearExpense")
+	public String year(ModelMap model) {
+		User user = (User) model.getAttribute("user");
+		 
+			int january = expenserepo.findByMonth("2020-01-01","2020-01-31",user.getId());
+			int feburary= expenserepo.findByMonth("2020-02-01","2020-02-29",user.getId());
+
+			int march= expenserepo.findByMonth("2020-03-01","2020-03-31",user.getId());
+			int april= expenserepo.findByMonth("2020-04-01","2020-04-30",user.getId());
+			int may = expenserepo.findByMonth("2020-05-01","2020-05-31",user.getId());
+			int june = expenserepo.findByMonth("2020-06-01","2020-06-30",user.getId());
+			int july = expenserepo.findByMonth("2020-07-01","2020-07-31",user.getId());
+			int august = expenserepo.findByMonth("2020-08-01","2020-08-31",user.getId());
+			int september = expenserepo.findByMonth("2020-09-01","2020-09-30",user.getId());
+			int october = expenserepo.findByMonth("2020-10-01","2020-10-31",user.getId());
+			int november = expenserepo.findByMonth("2020-11-01","2020-11-30",user.getId());
+			int december = expenserepo.findByMonth("2020-12-01","2020-12-31",user.getId());
+
+			model.put("january", january);
+			model.put("feburary", feburary);
+			model.put("march", march);
+			model.put("april", april);
+			model.put("may", may);
+			model.put("june", june);
+			model.put("july", july);	
+			model.put("august", august);
+			model.put("september", september);
+			model.put("october", october);
+			model.put("november", november);	
+			model.put("december", december);
+		
+
+		return "across_year";
+
+	}
+	
+	
+	
 
 }

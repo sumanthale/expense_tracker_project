@@ -21,14 +21,14 @@ public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 
 	@Query(value = "SELECT COALESCE(SUM(cost), 0)FROM expense WHERE category = :category and user_id = :id", nativeQuery = true)
 	int findTotalcost(@Param("category") String category, @Param("id") int user_id);
-	
+
 	@Query(value = "SELECT * FROM expense WHERE category = :category and user_id = :id", nativeQuery = true)
 	List<Expense> findByCategory(@Param("category") String category, @Param("id") int user_id);
-	
-	
-	
-	
+
 	@Query(value = "SELECT * FROM expense WHERE  date =:date and user_id = :id order by date desc , id desc", nativeQuery = true)
 	List<Expense> findByDate(@Param("date") Date date, @Param("id") int user_id);
+
+	@Query(value = "SELECT COALESCE(SUM(cost), 0)FROM expense WHERE date BETWEEN   :start  and :end and user_id = :id", nativeQuery = true)
+	int findByMonth(@Param("start") String start, @Param("end") String end, @Param("id") int user_id);
 
 }

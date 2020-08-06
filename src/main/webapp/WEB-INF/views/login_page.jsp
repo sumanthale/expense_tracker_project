@@ -15,12 +15,50 @@
 	integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
 	crossorigin="anonymous">
 
+<style>
 
+.disp{
+display:none;
+}
+.securely {
+    background-color: #e4f9d5;
+    width: 21%;
+    color: black;
+    top: 23%;
+    left: 64%;
+    padding: 12px;
+    padding-left: 12px;
+    border-left: 15px solid #68d120;
+}
+.securely .disp{
+display:inline-block;
+}
+
+     @media only screen and (max-width: 820px) {
+     .securely {
+     background-color: #e4f9d5;
+    width: 36%;
+    color: black;
+    top: 23%;
+    left: 47%;
+    padding: 12px;
+    padding-left: 12px;
+    border-left: 15px solid #68d120;
+   
+}
+
+}
+
+</style>
 <title>Expense</title>
 </head>
 <body>
 
-
+	<div class="h6 position-absolute ${logoutDone}">
+		<i class="fas fa-check-circle disp"></i> ${logoutDone}
+	</div>
+	<%-- <div
+		class=" text-center text-success font-weight-bold position-absolute logoutmsg h4 ${logoutDone}">${logoutDone}</div> --%>
 	<form class="form-signin position-absolute" action="/verifyLogin"
 		method="post">
 		<h1 class="h3 mb-3 font-weight-normal text-white">Sign in</h1>
@@ -29,8 +67,8 @@
 			placeholder="Email address" name="email" required autofocus /> <label
 			for="inputPassword" class="sr-only">Password</label> <input
 			type="password" id="inputPassword" class="form-control"
-			name="password" placeholder="Password" required />
-			<span class="showpwd"><i class="far fa-eye" id="togglePassword"></i></span>
+			name="password" placeholder="Password" required /> <span
+			class="showpwd"><i class="far fa-eye" id="togglePassword"></i></span>
 		<div class="checkbox mb-1 text-white">
 			<label> <input type="checkbox" value="remember-me" />
 				Remember me
@@ -47,4 +85,4 @@
 		</small>
 	</form>
 
-<%@ include file="common/footer.jspf" %>
+	<%@ include file="common/footer.jspf"%>

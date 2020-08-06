@@ -1,7 +1,7 @@
 
 <nav
 	class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-	<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Expense
+	<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/landingPage">Expense
 		Tracker</a>
 	<button class="navbar-toggler position-absolute d-md-none collapsed"
 		type="button" data-toggle="collapse" data-target="#sidebarMenu"
@@ -14,11 +14,30 @@
 	<ul class="navbar-nav px-3">
 
 		<li class="nav-item text-nowrap "><a class="nav-link"
-			href="/addExpense">Add Expense</a></li>
+			href="/addExpense">Add Expense <i class="fas fa-plus-circle"></i></a></li>
 	</ul>
 	<ul class="navbar-nav px-3">
 
-		<li class="nav-item text-nowrap"><a class="nav-link" href="/">Sign
-				out</a></li>
+		<li class="nav-item text-nowrap"><a class="nav-link"
+			onclick="logout(); return false;" id="toggle-logout" href="#">Sign
+				out <i class="fas fa-sign-out-alt"></i>
+		</a></li>
 	</ul>
 </nav>
+
+<div id="logout" class="hide-logout position-absolute shadow">
+	<div class="card">
+		<div class="card-header h3">Logout ?</div>
+		<div class="card-body">
+			<h5 class="card-title">Expense Tracker Says</h5>
+			<p class="card-text">Are you Sure you want to Logout ?</p>
+			<div class="d-flex justify-content-around">
+				<a href="/logout" class="btn btn-outline-success btn-lg">Logout <i
+					class="fas fa-sign-out-alt"></i>
+				</a> <a href="#" onclick="logout(); return false;"
+					class="btn btn-outline-dark btn-lg">Cancel <i
+					class="fas fa-times-circle"></i></a>
+			</div>
+		</div>
+	</div>
+</div>

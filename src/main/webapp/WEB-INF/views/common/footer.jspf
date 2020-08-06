@@ -1,3 +1,8 @@
+	
+	
+	
+	
+	
 	<script>
 		const togglePassword = document.querySelector("#togglePassword");
 		const password = document.querySelector("#inputPassword");
@@ -9,6 +14,13 @@
 			this.classList.toggle("fa-eye-slash");
 		});
 	</script>
+	<script>
+      function logout() {
+        var logout = document.getElementById("logout");
+
+        logout.classList.toggle("show-logout");
+      }
+    </script>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -39,12 +39,24 @@ public class UserController {
 
 	@GetMapping("/*")
 	public String wrongurl() {
+
 		return "redirect:/login";
 
 	}
+
 	@GetMapping("/login")
 	public String showLogin() {
 		return "login_page";
+
+	}
+
+	@GetMapping("/logout")
+	public String logout(ModelMap map) {
+
+		// resetting the user to new user here
+		map.put("user", new User());
+		map.put("logoutDone", "You have securely logged out. All your changes have been saved.");
+		return "/login_page";
 
 	}
 
@@ -107,9 +119,6 @@ public class UserController {
 			map.put("invaid_email", "* Email is  already taken");
 			return "edit_userDetais";
 		}
-
-		// userrepo.updateUser(user.getName(), user.getEmail(), user.getPassword(),
-		// user.getIncome(), user.getId());
 		userrepo.save(user);
 		return "redirect:/landingPage";
 	}
