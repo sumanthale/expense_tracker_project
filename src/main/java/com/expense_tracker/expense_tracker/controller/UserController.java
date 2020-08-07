@@ -103,6 +103,13 @@ public class UserController {
 	@GetMapping("/editUserDetails")
 	public String editUserDetails(ModelMap model) {
 		User user = (User) model.getAttribute("user");
+		// Security for the project
+
+		if (user == null || user.getId() == 0) {
+			System.out.println("Null user");
+			return "redirect:/";
+		}
+		// end
 		model.put("user", user);
 		return "edit_userDetais";
 	}

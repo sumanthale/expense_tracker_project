@@ -16,39 +16,42 @@
 	crossorigin="anonymous">
 
 <style>
-
-.disp{
-display:none;
+.disp {
+	display: none;
 }
+
 .securely {
-    background-color: #e4f9d5;
-    width: 21%;
-    color: black;
-    top: 23%;
-    left: 64%;
-    padding: 12px;
-    padding-left: 12px;
-    border-left: 15px solid #68d120;
-}
-.securely .disp{
-display:inline-block;
+	background-color: #e4f9d5;
+	width: 21%;
+	color: black;
+	top: 23%;
+	left: 64%;
+	padding: 12px;
+	padding-left: 12px;
+	border-left: 15px solid #68d120;
 }
 
-     @media only screen and (max-width: 820px) {
-     .securely {
-     background-color: #e4f9d5;
-    width: 36%;
-    color: black;
-    top: 23%;
-    left: 47%;
-    padding: 12px;
-    padding-left: 12px;
-    border-left: 15px solid #68d120;
-   
+.securely .disp {
+	display: inline-block;
 }
 
+@media only screen and (max-width: 820px) {
+	.securely {
+		background-color: #e4f9d5;
+		width: 36%;
+		color: black;
+		top: 23%;
+		left: 47%;
+		padding: 12px;
+		padding-left: 12px;
+		border-left: 15px solid #68d120;
+	}
 }
 
+.footerr {
+	top: 85%;
+	left: 46%;
+}
 </style>
 <title>Expense</title>
 </head>
@@ -84,5 +87,8 @@ display:inline-block;
 			href="/signUpForm">Sign up</a>
 		</small>
 	</form>
+	
+	<footer class="footerr position-absolute text-white h6 ">Copyright © 2020
+		ALE SUMANTH. All Rights Reserved </footer>
 
 	<%@ include file="common/footer.jspf"%>

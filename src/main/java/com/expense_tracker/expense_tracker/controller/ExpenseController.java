@@ -19,11 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.expense_tracker.expense_tracker.model.Expense;
 import com.expense_tracker.expense_tracker.model.User;
@@ -75,11 +72,16 @@ public class ExpenseController {
 
 	@GetMapping("/addExpense")
 	public String showAddExpensePage(ModelMap map) {
+		
+		User user = (User) map.getAttribute("user");
+		// Security for the project
+
+		if (user == null || user.getId() == 0) {
+			return "redirect:/";
+		}
+		// end
 
 		map.put("newExpense", new Expense());
-		
-		
-
 
 		return "addExpense_page2";
 
@@ -102,7 +104,15 @@ public class ExpenseController {
 
 	@GetMapping("/landingPage")
 	public String check(ModelMap model) {
+
 		User user = (User) model.getAttribute("user");
+		// Security for the project
+
+		if (user == null || user.getId() == 0) {
+			return "redirect:/";
+		}
+		// end
+
 		List<Expense> findExpensesOfUser = expenserepo.findExpensesOfUser(user.getId());
 		int FOOD = expenserepo.findTotalcost("FOOD", user.getId());
 		int ENTERTAINMENT = expenserepo.findTotalcost("ENTERTAINMENT", user.getId());
@@ -137,17 +147,32 @@ public class ExpenseController {
 		return "landing_page";
 	}
 
-	@RequestMapping(value = "/deleteExpense", method = RequestMethod.GET)
-	public String deleteExpense(@RequestParam int id) {
+	@GetMapping(value = "/deleteExpense")
+	public String deleteExpense(@RequestParam int id, ModelMap model) {
+		// Security for the project
+
+		User user = (User) model.getAttribute("user");
+		if (user == null || user.getId() == 0) {
+			System.out.println("Null user");
+			return "redirect:/";
+		}
+		// end
 
 		expenserepo.deleteById(id);
 
 		return "redirect:/landingPage";
 	}
 
-	@RequestMapping(value = "/updateExpense", method = RequestMethod.GET)
+	@GetMapping(value = "/updateExpense")
 	public String updateExpense(@RequestParam int id, ModelMap modelMap) {
 
+		User user = (User) modelMap.getAttribute("user");
+		// Security for the project
+		if (user == null || user.getId() == 0) {
+			System.out.println("Null user");
+			return "redirect:/";
+		}
+		// end
 		Expense expense = expenserepo.findById(id).orElse(new Expense());
 		modelMap.put("newExpense", expense);
 		expenserepo.deleteById(id);
@@ -156,6 +181,15 @@ public class ExpenseController {
 
 	@GetMapping("/expenseByDate")
 	public String expenseBYDate(ModelMap map) {
+		// Security for the project
+
+		User user = (User) map.getAttribute("user");
+		if (user == null || user.getId() == 0) {
+			System.out.println("Null user");
+			return "redirect:/";
+		}
+		// end
+		
 		map.put("addedDate", new Expense());
 
 		return "expenses_by_date";
@@ -168,6 +202,12 @@ public class ExpenseController {
 		System.out.println(expense.getDate());
 
 		User user = (User) map.getAttribute("user");
+		//security
+		if (user == null || user.getId() == 0) {
+			System.out.println("Null user");
+			return "redirect:/";
+		}
+		// end
 
 		List<Expense> findByDate = expenserepo.findByDate(expense.getDate(), user.getId());
 
@@ -181,24 +221,6 @@ public class ExpenseController {
 
 		return "expenses_by_date";
 	}
-//	@RequestMapping(value = "/updateDatedExpense", method = RequestMethod.GET)
-//	public String updateExpenseByDate(@RequestParam int id, ModelMap modelMap) {
-//
-//		Expense expense = expenserepo.findById(id).orElse(new Expense());
-//		modelMap.put("newExpense", expense);
-//		expenserepo.deleteById(id);
-//		return "addExpense_page2";
-//	}
-//	
-//	@RequestMapping(value = "/deleteDatedExpense", method = RequestMethod.GET)
-//	public String deleteDatedExpense(@RequestParam int id) {
-//
-//		expenserepo.deleteById(id);
-//
-//		return "redirect:/";
-//	}
 
-	
-	
-	
+
 }

@@ -51,11 +51,11 @@ margin-top:-30px;
 	if(bal>0){
 		function myFunction() {
 			  
-			  document.getElementById("demo").innerHTML = bal;  
+			  document.getElementById("demo").innerHTML = "Income left = "+bal;  
 			}
 	}
 	else{
-		  document.getElementById("demo").innerHTML = bal;  
+		  document.getElementById("demo").innerHTML = "You Expenses are more than your Income by "+bal*-1 + "<br> Start Saving";  
 		 var element = document.getElementById("demo");
 		  element.classList.remove("alert-info");
 		  element.classList.add("alert-danger");
@@ -76,7 +76,7 @@ margin-top:-30px;
 
 			],
 			datasets : [ {
-				label : "My First dataset",
+				label : "Total ",
 				backgroundColor : [ "#ff507c","#2ef7f4", 
 
 				],

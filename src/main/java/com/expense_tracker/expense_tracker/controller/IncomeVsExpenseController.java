@@ -26,6 +26,7 @@ import com.expense_tracker.expense_tracker.model.Expense;
 import com.expense_tracker.expense_tracker.model.User;
 import com.expense_tracker.expense_tracker.repository.ExpenseRepository;
 import com.expense_tracker.expense_tracker.repository.UserRepository;
+import com.expense_tracker.expense_tracker.service.LoginService;
 
 @Controller
 
@@ -54,8 +55,13 @@ public class IncomeVsExpenseController {
 	@GetMapping("/userVsExp")
 	public String userVsExp(ModelMap model) {
 		User user = (User) model.getAttribute("user");
-		 List<Expense> findAll = expenserepo.findExpensesOfUser(user.getId());
-		// List<Expense> findAll = user.getExpenses();
+		// Security for the project
+
+		if (user == null || user.getId() == 0) {
+			return "redirect:/";
+		}
+		// end
+		List<Expense> findAll = expenserepo.findExpensesOfUser(user.getId());
 		System.out.println(findAll);
 		if (findAll.size() < 1 || findAll == null) {
 			model.put("noExpFound", "Add at least one Expense");
@@ -68,18 +74,17 @@ public class IncomeVsExpenseController {
 
 	}
 
-	@GetMapping("/dummy")
-	public String userVsExp() {
-
-		return "dummy";
-
-	}
-
 	@GetMapping("/category")
 	public String singleCato(@RequestParam("name") String category, ModelMap map) {
 		User user = (User) map.getAttribute("user");
+		// Security for the project
 
-		map.put("expenseCategory", category.substring(0, 1)+category.substring(1).toLowerCase());
+		if (user == null || user.getId() == 0) {
+			return "redirect:/";
+		}
+		// end
+
+		map.put("expenseCategory", category.substring(0, 1) + category.substring(1).toLowerCase());
 		List<Expense> findByCategory = expenserepo.findByCategory(category, user.getId());
 
 		map.put("expenseCategoryList", findByCategory);
@@ -89,9 +94,14 @@ public class IncomeVsExpenseController {
 
 	}
 
-	@RequestMapping(value = "/deleteCategoryExpense", method = RequestMethod.GET)
-	public String deleteExpense(@RequestParam int id) {
-
+	@GetMapping(value = "/deleteCategoryExpense")
+	public String deleteExpense(@RequestParam int id, ModelMap model) {
+		// security
+		User user = (User) model.getAttribute("user");
+		if (user == null || user.getId() == 0) {
+			return "redirect:/";
+		}
+//end
 		Expense expense = expenserepo.findById(id).orElse(new Expense());
 
 		expenserepo.deleteById(id);
@@ -99,11 +109,17 @@ public class IncomeVsExpenseController {
 		return "redirect:/category?name=" + expense.getCategory();
 	}
 
-	@RequestMapping(value = "/updateCategoryExpense", method = RequestMethod.GET)
-	public String updateTodoPage(@RequestParam int id, ModelMap modelMap) {
+	@GetMapping(value = "/updateCategoryExpense")
+	public String updateTodoPage(@RequestParam int id, ModelMap model) {
+		// security
+		User user = (User) model.getAttribute("user");
+		if (user == null || user.getId() == 0) {
+			return "redirect:/";
+		}
+//end
 
 		Expense expense = expenserepo.findById(id).orElse(new Expense());
-		modelMap.put("newExpense", expense);
+		model.put("newExpense", expense);
 		expenserepo.deleteById(id);
 		return "updateCategoryExp";
 	}
@@ -122,44 +138,46 @@ public class IncomeVsExpenseController {
 
 		return "redirect:/category?name=" + expense.getCategory();
 	}
-	
+
 	@GetMapping("/allYearExpense")
 	public String year(ModelMap model) {
 		User user = (User) model.getAttribute("user");
-		 
-			int january = expenserepo.findByMonth("2020-01-01","2020-01-31",user.getId());
-			int feburary= expenserepo.findByMonth("2020-02-01","2020-02-29",user.getId());
+		// security
+		if (user == null || user.getId() == 0) {
+			return "redirect:/";
+		}
+//end
+		String str = new LoginService().getYear();
+		model.put("year", str);
+		int january = expenserepo.findByMonth(str + "-01-01", str + "-01-31", user.getId());
+		int feburary = expenserepo.findByMonth(str + "-02-01", str + "-02-29", user.getId());
 
-			int march= expenserepo.findByMonth("2020-03-01","2020-03-31",user.getId());
-			int april= expenserepo.findByMonth("2020-04-01","2020-04-30",user.getId());
-			int may = expenserepo.findByMonth("2020-05-01","2020-05-31",user.getId());
-			int june = expenserepo.findByMonth("2020-06-01","2020-06-30",user.getId());
-			int july = expenserepo.findByMonth("2020-07-01","2020-07-31",user.getId());
-			int august = expenserepo.findByMonth("2020-08-01","2020-08-31",user.getId());
-			int september = expenserepo.findByMonth("2020-09-01","2020-09-30",user.getId());
-			int october = expenserepo.findByMonth("2020-10-01","2020-10-31",user.getId());
-			int november = expenserepo.findByMonth("2020-11-01","2020-11-30",user.getId());
-			int december = expenserepo.findByMonth("2020-12-01","2020-12-31",user.getId());
+		int march = expenserepo.findByMonth(str + "-03-01", str + "-03-31", user.getId());
+		int april = expenserepo.findByMonth(str + "-04-01", str + "-04-30", user.getId());
+		int may = expenserepo.findByMonth(str + "-05-01", str + "-05-31", user.getId());
+		int june = expenserepo.findByMonth(str + "-06-01", str + "-06-30", user.getId());
+		int july = expenserepo.findByMonth(str + "-07-01", str + "-07-31", user.getId());
+		int august = expenserepo.findByMonth(str + "-08-01", str + "-08-31", user.getId());
+		int september = expenserepo.findByMonth(str + "-09-01", str + "-09-30", user.getId());
+		int october = expenserepo.findByMonth(str + "-10-01", str + "-10-31", user.getId());
+		int november = expenserepo.findByMonth(str + "-11-01", str + "-11-30", user.getId());
+		int december = expenserepo.findByMonth(str + "-12-01", str + "-12-31", user.getId());
 
-			model.put("january", january);
-			model.put("feburary", feburary);
-			model.put("march", march);
-			model.put("april", april);
-			model.put("may", may);
-			model.put("june", june);
-			model.put("july", july);	
-			model.put("august", august);
-			model.put("september", september);
-			model.put("october", october);
-			model.put("november", november);	
-			model.put("december", december);
-		
+		model.put("january", january);
+		model.put("feburary", feburary);
+		model.put("march", march);
+		model.put("april", april);
+		model.put("may", may);
+		model.put("june", june);
+		model.put("july", july);
+		model.put("august", august);
+		model.put("september", september);
+		model.put("october", october);
+		model.put("november", november);
+		model.put("december", december);
 
 		return "across_year";
 
 	}
-	
-	
-	
 
 }

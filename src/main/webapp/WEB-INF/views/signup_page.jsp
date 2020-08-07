@@ -14,6 +14,13 @@
 	crossorigin="anonymous" />
 <link rel="stylesheet" href="css/signup.css" />
 
+<style>
+.footerr {
+	top: 85%;
+	left: 46%;
+}
+</style>
+
 <title>Expense</title>
 </head>
 <body>
@@ -52,5 +59,6 @@
 			Cancel &nbsp; <i class="fas fa-times"></i>&nbsp;
 		</a>
 	</form:form>
-
+	<footer class="footerr position-absolute text-white h6 ">Copyright © 2020
+		ALE SUMANTH. All Rights Reserved </footer>
 <%@ include file="common/footer.jspf" %>

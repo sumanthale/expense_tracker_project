@@ -33,7 +33,7 @@
 					<table
 						class="table table-striped table-hover table-bordered table-md">
 						<thead class="thead-dark">
-							<tr>
+							<tr align="center">
 								<th class="h5 text-white">Name</th>
 								<th class="h5 text-white">Category</th>
 								<th class="h5 text-white">Cost</th>
@@ -45,7 +45,7 @@
 						</thead>
 						<tbody>
 			<c:forEach items="${expenseCategoryList}" var="expense">
-				<tr>
+				<tr align="center">
 					<%-- 		<td>${expense.id}</td> --%>
 					<td class="h6 text-secondary">${expense.name}</td>
 					<td class="h6 text-secondary">${expense.category}</td>

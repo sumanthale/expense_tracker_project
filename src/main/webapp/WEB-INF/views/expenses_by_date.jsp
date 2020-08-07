@@ -34,26 +34,26 @@
 					<table
 						class="table table-striped table-hover table-bordered table-md">
 						<thead class="thead-dark">
-							<tr>
-								<th>Name</th>
-								<th>Category</th>
-								<th>Cost</th>
-								<th>Date</th>
-								<th>Description</th>
+							<tr align="center">
+								<th  class="h5 text-white">Name</th>
+								<th  class="h5 text-white">Category</th>
+								<th  class="h5 text-white">Cost</th>
+								<th  class="h5 text-white">Date</th>
+								<th  class="h5 text-white">Description</th>
 							<!-- 	<th>Update</th>
 								<th>Delete</th> -->
 							</tr>
 						</thead>
 						<tbody>
 			<c:forEach items="${dateList}" var="expense">
-				<tr>
+				<tr align="center">
 					<%-- 		<td>${expense.id}</td> --%>
-					<td>${expense.name}</td>
-					<td>${expense.category}</td>
-					<td>${expense.cost}</td>
-					<td><fmt:formatDate value="${expense.date}"
+					<td class="h6 text-secondary">${expense.name}</td>
+					<td class="h6 text-secondary">${expense.category}</td>
+					<td class="h6 text-secondary">${expense.cost}</td>
+					<td class="h6 text-secondary"><fmt:formatDate value="${expense.date}"
 							pattern="dd/MM/yyyy" /></td>
-					<td>${expense.description}</td>
+					<td class="h6 text-secondary">${expense.description}</td>
 				
 				<%-- 	<td><a type="button" class="btn btn-success"
 						href="/updateDatedExpense?id=${expense.id}">Update</a></td>
