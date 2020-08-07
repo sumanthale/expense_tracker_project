@@ -4,20 +4,19 @@
 	<div class="sidebar-sticky pt-3">
 		<ul class="nav flex-column">
 			<li class="nav-item"><a class="nav-link" href="/landingPage">
-					<i class="fas fa-home"></i> &nbsp; Dashboard
+					<i class="fas fa-home"></i>&nbsp; Dashboard
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="/userVsExp">
-					<i class="fas fa-balance-scale"></i> &nbsp; Income Vs Expense
+					<i class="fas fa-balance-scale"></i>&nbsp; Income Vs Expense
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="/addExpense">
 					<i class="fas fa-plus-circle"></i>&nbsp; Add Expense
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="/editUserDetails">
-					<i class="fas fa-edit"></i> &nbsp; Edit Profile
+					<i class="fas fa-edit"></i>&nbsp; Edit Profile
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="/expenseByDate">
-					<span data-feather="layers"></span><i class="fas fa-calendar-day"></i>
-					&nbsp; Get Expenses By Date
+					<i class="fas fa-calendar-day"></i>&nbsp; Get Expenses By Date
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="/allYearExpense">
 					<span data-feather="bar-chart-2"></span> <i
@@ -68,11 +67,11 @@
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="/category?name=MISCELLANEOUS"> <i class="fas fa-box-open"></i>
-					&nbsp; MISCELLANEOUS
+				&nbsp; MISCELLANEOUS
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/category?name=KIDS"> <i class="fas fa-baby"></i> &nbsp;
-					KIDS
+				href="/category?name=KIDS"> <i class="fas fa-baby"></i>
+					&nbsp;KIDS
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="/category?name=TRANSPORTATION"> <i class="fas fa-bus"></i>

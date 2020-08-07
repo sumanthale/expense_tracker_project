@@ -11,7 +11,7 @@
 .error-cost {
 	position: absolute;
 	right: 5.5%;
-	 width: 176px;
+	 width: 190px;
 }
 
 .alert {
@@ -72,7 +72,7 @@
 							<button
 								class=" btn-lg btn btn-outline-primary btn-inline-block ml-1 font-weight-bolder shadow mb-4"
 								type="submit">
-								Submit &nbsp; <i class="fas fa-user-plus"></i>
+								Submit &nbsp; <i class="fas fa-check-circle"></i>
 							</button>
 							<a
 								class="btn btn-lg btn-outline-danger btn-inline-block ml-3 font-weight-bolder shadow mb-4"

@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -67,8 +65,16 @@ public class IncomeVsExpenseController {
 			model.put("noExpFound", "Add at least one Expense");
 			return "landing_page";
 		}
-		int sumOfExp = expenserepo.getSumOfExp(user.getId());
-		model.put("exp", sumOfExp);
+		LoginService service = new LoginService();
+
+		String year = service.getYear();
+		String month = service.getMonth();
+		System.out.println(year + " vs" + month);
+		int thismonth = expenserepo.findByMonth(year + "-" + month + "-01", year + "-" + month + "-31", user.getId());
+		// int sumOfExp = expenserepo.getSumOfExp(user.getId());
+		String monthName = service.getMonthName();
+		model.put("curMon", monthName);
+		model.put("exp", thismonth);
 		model.put("inc", user.getIncome());
 		return "userVsExp_page";
 
