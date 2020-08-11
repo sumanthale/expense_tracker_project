@@ -20,7 +20,7 @@
 	display: none;
 }
 
-.securely {
+.securely , .created{
 	background-color: #e4f9d5;
 	width: 21%;
 	color: black;
@@ -36,7 +36,7 @@
 }
 
 @media only screen and (max-width: 820px) {
-	.securely {
+	.securely, .created {
 		background-color: #e4f9d5;
 		width: 36%;
 		color: black;
@@ -60,6 +60,11 @@
 	<div class="h6 position-absolute ${logoutDone}">
 		<i class="fas fa-check-circle disp"></i> ${logoutDone}
 	</div>
+	<div class="h6 position-absolute ${signupSucessful}">
+		<i class="fas fa-check-circle disp"></i> ${signupSucessful}
+	</div>
+	
+	
 	<%-- <div
 		class=" text-center text-success font-weight-bold position-absolute logoutmsg h4 ${logoutDone}">${logoutDone}</div> --%>
 	<form class="form-signin position-absolute" action="/verifyLogin"

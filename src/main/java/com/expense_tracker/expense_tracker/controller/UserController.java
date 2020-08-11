@@ -97,7 +97,8 @@ public class UserController {
 			return "signup_page";
 		}
 		userrepo.save(user);
-		return "redirect:/";
+		map.put("signupSucessful","You have sucessfully created a account login to continue.");
+		return "login_page";
 	}
 
 	@GetMapping("/editUserDetails")

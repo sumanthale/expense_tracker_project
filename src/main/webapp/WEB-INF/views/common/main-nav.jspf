@@ -27,7 +27,7 @@
 
 <div id="logout" class="hide-logout position-fixed shadow">
 	<div class="card">
-		<div class="card-header h3">Logout ?</div>
+		<div class="card-header h3 logout-head">Logout ?</div>
 		<div class="card-body">
 			<h5 class="card-title">Expense Tracker Says</h5>
 			<p class="card-text">Are you Sure you want to Logout ?</p>
